@@ -441,7 +441,7 @@ const scaleConfigs = {
   year: { cellWidth: 180, preBuffer: 0, sufBuffer: 0 },
   quarter: {cellWidth: 60, preBuffer: 0, sufBuffer: 0 },
   hour: { cellWidth: 40},
-  day: { cellWidth: 70, preBuffer: 0, sufBuffer: 1, formatter: { primary: 'yyyy-MM', secondary: 'dd' } },
+  day: { cellWidth: 120, preBuffer: 0, sufBuffer: 1, formatter: { primary: 'yyyy-MM', secondary: 'dd' } },
 }
 
 // Tool 设置区域折叠状态（默认展开用于演示）
