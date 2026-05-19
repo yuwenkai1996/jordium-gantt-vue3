@@ -92,7 +92,10 @@ const findRawDataSource = (key: DataSourceKey) => rawDataSources.find(source => 
 
 const applyDataSource = (source: RawDataSource) => {
   const payload = source.payload as { tasks?: Task[]; milestones?: Task[] }
-  tasks.value = cloneData(payload.tasks ?? [])
+  setTimeout(() => {
+    tasks.value = cloneData(payload.tasks ?? [])
+  }, 1000)
+  
   milestones.value = cloneData(payload.milestones ?? [])
 
   // v1.9.0 从资源数据文件加载
@@ -230,7 +233,7 @@ const toolbarConfig = reactive({
   showFullscreen: true,
   showTimeScale: true, // 控制日|周|月时间刻度按钮组的可见性
   timeScaleDimensions: ['hour', 'day', 'week', 'month', 'quarter', 'year'], // 设置时间刻度按钮的展示维度，包含所有时间维度
-  defaultTimeScale: 'month',
+  defaultTimeScale: 'day',
   showExpandCollapse: true, // 显示全部展开/折叠按钮
   showViewMode: true, // 显示 Task/Resource 视图切换按钮组
 })
@@ -434,11 +437,11 @@ const isTaskBarConfigCollapsed = ref(true)
 // TimeScale 配置演示（直接使用符合 scaleConfigs prop 结构的静态配置）
 const scaleConfigs = {
   week: { cellWidth: 60, preBuffer: 3, sufBuffer: 3, formatter: { primary: 'yyyy-MM', secondary: 'W周' } },
-  month: { cellWidth: 60, preBuffer: 0, sufBuffer: 0 },
+  month: { cellWidth: 120, preBuffer: 0, sufBuffer: 0 },
   year: { cellWidth: 180, preBuffer: 0, sufBuffer: 0 },
   quarter: {cellWidth: 60, preBuffer: 0, sufBuffer: 0 },
   hour: { cellWidth: 40},
-  day: { cellWidth: 30, preBuffer: 0, sufBuffer: 1, formatter: { primary: 'yyyy-MM', secondary: 'dd' } },
+  day: { cellWidth: 70, preBuffer: 0, sufBuffer: 1, formatter: { primary: 'yyyy-MM', secondary: 'dd' } },
 }
 
 // Tool 设置区域折叠状态（默认展开用于演示）
